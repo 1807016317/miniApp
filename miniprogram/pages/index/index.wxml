@@ -1,0 +1,18 @@
+<!--index.wxml-->
+<view class="container">
+
+  <!--小程序名称-->
+  <label class="app-name">王者荣耀战队审核小工具</label>
+
+  <view class="center">
+
+    <!--战队队长入口-->
+    <button class="create-verify" bindtap="create_verify">创建审核</button>
+
+    <!--申请玩家入口-->
+    <button class="application-verify" bindtap="application_verify">申请审核</button>
+  </view>
+
+  <label class="author-name">王权富贵制作</label>
+
+</view>
