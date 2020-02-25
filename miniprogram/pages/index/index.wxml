@@ -11,6 +11,9 @@
 
     <!--申请玩家入口-->
     <button class="application-verify" bindtap="application_verify">申请审核</button>
+
+    <!--修改审核标准入口-->
+    <button class="application-verify" bindtap="change_verify">更新审核标准</button>
   </view>
 
   <label class="author-name">王权富贵制作</label>

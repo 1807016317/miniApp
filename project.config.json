@@ -11,7 +11,7 @@
 	},
 	"appid": "wx23255f9cf55734e8",
 	"projectname": "WQFG",
-	"libVersion": "2.8.1",
+	"libVersion": "2.10.1",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",

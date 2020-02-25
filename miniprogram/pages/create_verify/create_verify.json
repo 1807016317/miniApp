@@ -1,3 +1,10 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "mp-toptips": "../../style/toptips/toptips",
+    "mp-cells": "../../style/cells/cells",
+    "mp-cell": "../../style/cell/cell",
+    "mp-checkbox": "../../style/checkbox/checkbox",
+    "mp-checkbox-group": "../../style/checkbox-group/checkbox-group",
+    "mp-form": "../../style/form/form"
+  }
 }

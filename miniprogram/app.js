@@ -14,8 +14,8 @@ App({
         traceUser: true,
       })
       const db = require('./util/dataBase.js')
-      db.onQuery('create_verify', 'team');
-      db.onQuery('create_verify', 'dan-grading');
+      db.onQueryById('create_verify', 'team');
+      db.onQueryById('create_verify', 'dan-grading');
     }
 
     this.globalData = {}

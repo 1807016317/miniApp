@@ -4,69 +4,82 @@
 
   <label class="title">请设置审核标准</label>
 
+  <mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+
   <!--审核标准表单-->
-  <form class="create-form">
+  <form class="create-form" bindsubmit="formSubmit" bindreset="formReset">
 
     <!--区服选择器-->
-    <view class="dan-grading-picker">
-      <picker mode="multiSelector" bindchange="bindSystemPickerChange" bindcolumnchange="bindSystemPickerColumnChange" value="{{systemIndex}}" range="{{systemArray}}">
-        <view class="heading">
-          <text style="color:red">*</text> 选择战队所在区服：
+    <view class="weui-cells__title">
+      <label style="color:red">*</label> 选择战队所在区服：</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__bd">
+          <picker name="systemPicke" mode="multiSelector" bindchange="bindSystemPickerChange" bindcolumnchange="bindSystemPickerColumnChange" value="{{systemIndex}}" range="{{systemArray}}">
+            <view class="weui-select">{{systemArray[0][systemIndex[0]]}} - {{systemArray[1][systemIndex[1]]}}</view>
+          </picker>
         </view>
-        <view class="picke input-cells">{{systemArray[0][systemIndex[0]]}} - {{systemArray[1][systemIndex[1]]}}</view>
-      </picker>
+      </view>
     </view>
 
     <!--段位选择器-->
-    <view class="dan-grading-picker">
-      <picker mode="multiSelector" bindchange="bindDanPickerChange" bindcolumnchange="bindDanPickerColumnChange" value="{{dangradingIndex}}" range="{{dangradingArray}}">
-        <view class="heading">
-          <text style="color:red">*</text> 请输入段位限制(王者一段 = 10星)：
+    <view class="weui-cells__title">
+      <label style="color:red">*</label> 请输入段位限制(王者一段 = 10星)：</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_select">
+        <view class="weui-cell__bd">
+          <picker name="dangradingPicke" mode="multiSelector" bindchange="bindDanPickerChange" bindcolumnchange="bindDanPickerColumnChange" value="{{dangradingIndex}}" range="{{dangradingArray}}">
+            <view class="weui-select">{{dangradingArray[0][dangradingIndex[0]]}}
+              <block wx:if="{{dangradingArray[1] != []}}"> {{dangradingArray[1][dangradingIndex[1]]}} </block> {{dangradingArray[2][dangradingIndex[2]]}}
+            </view>
+          </picker>
         </view>
-        <view class="picke input-cells">{{dangradingArray[0][dangradingIndex[0]]}}
-          <block wx:if="{{dangradingArray[1] != []}}"> {{dangradingArray[1][dangradingIndex[1]]}} </block> {{dangradingArray[2][dangradingIndex[2]]}}
-        </view>
-      </picker>
+      </view>
     </view>
 
     <!--战队名-->
-    <label class="heading">
-      <text style="color:red">*</text> 请输入战队名：
-    </label>
-    <view class="input-cells picke">
+    <view class="weui-cells__title">
+      <label style="color:red">*</label> 请输入战队名：
+    </view>
+    <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_input">
-        <input class="weui-input" placeholder="" />
+        <input name="teamInput" class="weui-input" maxlength="7" />
       </view>
     </view>
 
     <!--胜率要求-->
-    <label class="heading">
+    <view class="weui-cells__title">
       请输入胜率限制：
-    </label>
-    <view class="input-cells picke">
+    </view>
+    <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_input">
-        <input class="weui-input" type="digit" maxlength="4" placeholder="无需输入%" />
+        <input name="winRateInput" class="weui-input" type="digit" maxlength="4" placeholder="请勿输入%" />
       </view>
     </view>
 
     <!--赛季评分-->
-    <label class="heading">
+    <view class="weui-cells__title">
       请输入赛季评分限制：
-    </label>
-    <view class="input-cells picke">
+    </view>
+    <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_input">
-        <input class="weui-input" type="digit" maxlength="4" placeholder="" />
+        <input name="scoreInput" class="weui-input" type="digit" maxlength="4" />
       </view>
     </view>
 
     <!--信誉积分-->
-    <label class="heading">
+    <view class="weui-cells__title">
       请输入信誉等级限制：
-    </label>
-    <view class="input-cells picke">
+    </view>
+    <view class="weui-cells weui-cells_after-title">
       <view class="weui-cell weui-cell_input">
-        <input class="weui-input" type="number" maxlength="1" placeholder="请输入信誉等级：1-6" />
+        <input name="creditLevelInput" class="weui-input" type="number" maxlength="1" placeholder="请输入信誉等级：1-6" />
       </view>
+    </view>
+
+    <view class="weui-btn-area">
+      <button form-type="submit">确定</button>
+      <button form-type="reset">Reset</button>
     </view>
 
   </form>

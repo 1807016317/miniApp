@@ -5,6 +5,7 @@
  */
 //import db from '../../util/dataBase.js'
 const db = require('../../util/dataBase.js')
+const util = require('../../util/util.js')
 const app = getApp()
 
 Page({
@@ -20,6 +21,14 @@ Page({
     dangradingArray: [], //用于选择器显示的段位参数
     datagArray: [], //从数据库取到的所有段位参数
     dangradingIndex: [0, 0, 0], //段位选择器列数
+    error: '请输入正确的数值', //错误提示
+    isShow: false, //是否显示提示
+    info: {
+      teamNameStr: '', //战队名称输入值
+      winRateStr: '', //胜率称输入值
+      scoreStr: '', //赛季评分
+      creditLevelStr: '', //信誉等级
+    }
   },
 
   /**
@@ -73,7 +82,6 @@ Page({
 
   //段位选择器列选择参数发生改变时
   bindDanPickerColumnChange: function(e) {
-    console.log(this.data.dangradingArray)
     console.log('段位修改的列为', e.detail.column, '，值为', e.detail.value);
     let data = {
       dangradingArray: this.data.dangradingArray,
@@ -120,7 +128,51 @@ Page({
         break;
     }
     console.log(data.dangradingIndex);
+    console.log(this.data.dangradingArray);
     this.setData(data);
   },
+
+  //评分数据实时更新
+  bindScorenput: function(e) {
+    this.setData({
+      scoreStr: e.detail.value
+    })
+    if (this.data.scoreStr > 100) {}
+  },
+
+  //表单提交
+  formSubmit(e) {
+    console.log('form发生了submit事件：', e);
+    //信誉积分,赛季评分,胜率
+    this.setData({
+      info: {
+        creditLevelStr: e.detail.value['creditLevelInput'],
+        scoreStr: e.detail.value['scoreInput'],
+        winRateStr: e.detail.value['winRateInput']
+      }
+    })
+    //战队名
+    if (util.dataIsValid(e.detail.value['teamInput'])) {
+      this.setData({
+        info: {
+          teamNameStr: e.detail.value['teamInput']
+        }
+      })
+    }
+    this.data.info.danData = []; //段位上传数据库数据
+    this.data.info.sysData = []; //区服数据
+    this.data.info.sysData.push(this.data.systemArray[0][this.data.systemIndex[0]]);
+    this.data.info.sysData.push(this.data.systemArray[1][this.data.systemIndex[1]]);
+    this.data.info.danData.push(this.data.dangradingArray[0][this.data.dangradingIndex[0]]);
+    this.data.info.danData.push(this.data.dangradingArray[1][this.data.dangradingIndex[1]]);
+    this.data.info.danData.push(this.data.dangradingArray[2][this.data.dangradingIndex[2]]);
+    //上传数据库
+    db.onAdd('team', this.data.info);
+    console.log('数据为：', this.data.info)
+  },
+
+  formReset: function() {
+    console.log('form发生了reset事件')
+  }
 
 })
