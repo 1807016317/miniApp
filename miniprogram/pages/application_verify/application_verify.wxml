@@ -1,1 +1,71 @@
 <!--pages/application_verify/application_verify.wxml-->
+
+<view class="container">
+
+  <label class="title">申请审核</label>
+
+  <!--审核申请表单-->
+  <form class="create-form">
+
+    <!--区服选择器-->
+    <view class="dan-grading-picker">
+      <picker mode="multiSelector" bindchange="bindSystemPickerChange" bindcolumnchange="bindSystemPickerColumnChange" value="{{systemIndex}}" range="{{systemArray}}">
+        <view class="heading">
+          <text style="color:red">*</text> 选择战队所在区服：
+        </view>
+        <view class="picke input-cells">{{systemArray[0][systemIndex[0]]}} - {{systemArray[1][systemIndex[1]]}}</view>
+      </picker>
+    </view>
+
+    <!--选择战队-->
+    <view class="dan-grading-picker">
+      <picker bindchange="bindTeamPickerChange" value="{{teamIndex}}" range="{{teamArray}}">
+        <view class="heading">
+          <text style="color:red">*</text> 请选择战队：
+        </view>
+        <view class="picke input-cells">{{teamArray[teamIndex]}} </view>
+      </picker>
+    </view>
+
+    <!--上传个人主页图-->
+    <label class="heading">
+      <text style="color:red">*</text> 请上传个人主页图：
+    </label>
+    <view>
+      <button class="upload-pic" bindtap="doUpload">
+        + 上传图片
+      </button>
+      <view class="uploader-container" wx:if="{{imgUrl}}">
+        <image class="uploader-image" src="{{imgUrl}}" mode="aspectFit" bindtap="previewImg"></image>
+      </view>
+    </view>
+
+    <!--上传赛季评分图-->
+    <label class="heading">
+      <text style="color:red">*</text> 请上传常用英雄图：
+    </label>
+    <view>
+      <button class="upload-pic" bindtap="doUpload">
+        + 上传图片
+      </button>
+      <view class="uploader-container" wx:if="{{imgUrl}}">
+        <image class="uploader-image" src="{{imgUrl}}" mode="aspectFit" bindtap="previewImg"></image>
+      </view>
+    </view>
+
+    <!--上传对战资料图-->
+    <label class="heading">
+      <text style="color:red">*</text> 请上传对战资料图：
+    </label>
+    <view>
+      <button class="upload-pic" bindtap="doUpload">
+        + 上传图片
+      </button>
+      <view class="uploader-container" wx:if="{{imgUrl}}">
+        <image class="uploader-image" src="{{imgUrl}}" mode="aspectFit" bindtap="previewImg"></image>
+      </view>
+    </view>
+
+  </form>
+
+</view>

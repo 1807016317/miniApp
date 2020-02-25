@@ -1,7 +1,7 @@
 //app.js
+
 App({
   onLaunch: function () {
-    
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力')
     } else {
@@ -13,6 +13,9 @@ App({
         // env: 'my-env-id',
         traceUser: true,
       })
+      const db = require('./util/dataBase.js')
+      db.onQuery('create_verify', 'team');
+      db.onQuery('create_verify', 'dan-grading');
     }
 
     this.globalData = {}

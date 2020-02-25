@@ -29,7 +29,7 @@ Page({
     let data = [];
     //存入数据库取出的所有段位参数，去除最后一位 _id 参数
     this.setData({
-      datagArray: Object.values(JSON.parse(db.data.queryResult))
+      datagArray: Object.values(JSON.parse(db.data.queryResult['dan-grading']))
     });
     this.data.datagArray.pop();
     //遍历所有段位参数，将用于显示的段位参数取出，选择条件可优化

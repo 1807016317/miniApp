@@ -21,7 +21,7 @@
     <view class="dan-grading-picker">
       <picker mode="multiSelector" bindchange="bindDanPickerChange" bindcolumnchange="bindDanPickerColumnChange" value="{{dangradingIndex}}" range="{{dangradingArray}}">
         <view class="heading">
-          <text style="color:red">*</text> 请输入段位限制(王者一段=10星)：
+          <text style="color:red">*</text> 请输入段位限制(王者一段 = 10星)：
         </view>
         <view class="picke input-cells">{{dangradingArray[0][dangradingIndex[0]]}}
           <block wx:if="{{dangradingArray[1] != []}}"> {{dangradingArray[1][dangradingIndex[1]]}} </block> {{dangradingArray[2][dangradingIndex[2]]}}

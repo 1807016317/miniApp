@@ -4,7 +4,7 @@
 /*标题*/
 .title {
   color: red;
-  font-family: 隶书;
+  font-family: cursive;
   font-size: 36rpx;
   position: absolute;
   top: 25rpx;
@@ -19,7 +19,7 @@
   text-align: left;
   padding-left: 15px;
   padding-right: 15px;
-  font-family: 黑体;
+  font-family: cursive;
   font-size: 28rpx;
 }
 
@@ -35,7 +35,7 @@
 /*段位选择器*/
 .dan-grading-picker {
   color: black;
-  font-family: 宋体;
+  font-family: cursive;
   text-align: center;
   position: relative;
   margin-top: 30rpx;
@@ -46,7 +46,7 @@
   margin-top: 15rpx;
   position: relative;
   background-color: #FFFFFF;
-  line-height: 1.41176471;
+  line-height: 1.31176471;
   font-size: 17px;
 }
 

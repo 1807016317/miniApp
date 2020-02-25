@@ -56,7 +56,7 @@ let dataBase = {
     db.collection(collection).doc(id).get({
        success: res => {
          console.log('[数据库] [查询记录] 成功: ', res.data)
-         this.data.queryResult = JSON.stringify(res.data, null, 0)
+         this.data.queryResult[id] = JSON.stringify(res.data, null, 0)
          console.log('[数据库] [查询记录] 成功: ', this.data.queryResult)
        },
        fail: err => {
