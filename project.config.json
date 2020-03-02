@@ -48,6 +48,13 @@
 					"id": -1,
 					"name": "pages/index/beifen",
 					"pathName": "pages/index/beifen",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/question-ask/question-ask",
+					"pathName": "pages/question-ask/question-ask",
 					"scene": null
 				}
 			]

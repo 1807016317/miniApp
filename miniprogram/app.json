@@ -15,13 +15,14 @@
     "pages/im/room/room",
     "pages/create_verify/create_verify",
     "pages/application_verify/application_verify",
-    "pages/change_verify/change_verify"
+    "pages/change_verify/change_verify",
+    "pages/question-ask/question-ask"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
-    "navigationBarTitleText": "王权富贵专属审核小程序",
+    "navigationBarTitleText": "王权富贵专属小工具",
     "navigationBarTextStyle": "black"
   },
   "sitemapLocation": "sitemap.json",

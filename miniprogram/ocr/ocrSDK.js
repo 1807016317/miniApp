@@ -13,7 +13,7 @@ class ocrSDK {
   SECRET_KEY = "rT51vyL9qjnb7ftKDhup5kGwREm7fRzn";
   instance = null;
 
-  // 新建一个对象，建议只保存一个对象调用服务接口
+  // 新建一个对象，建议只保存一个对象调用服务接口-单例
   getInstance() {
     return function () {
       if (!util.dataIsValid(instance)) {

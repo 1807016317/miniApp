@@ -19,6 +19,7 @@ Page({
     teamArray: [], //用于选择器显示的战队
     teamIndex: [0], //战队选择器类
     teamInfo: [],
+    imgUrl: [],
   },
 
   /**
@@ -35,7 +36,8 @@ Page({
     this.setData({
       teamArray: data
     });
-    console.log('this.data.teamArray', this.data.teamArray)  
+    console.log('this.data.teamArray', this.data.teamArray)
+    console.log('this:', this)
   },
 
   //拉取战队信息
@@ -73,21 +75,24 @@ Page({
 
   // 上传图片
   doUpload: function() {
+    let self = this;
     // 选择图片
     wx.chooseImage({
       count: 1,
-      sizeType: ['compressed'],
+      sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success: function(res) {
 
         wx.showLoading({
           title: '上传中',
         })
-
+        const imgUrl = self.data.imgUrl.concat(res.tempFilePaths)
         const filePath = res.tempFilePaths[0]
-
+        console.log('filePath:', filePath.match(/\.[^.]+?$/))
         // 上传图片
         const cloudPath = 'my-image' + filePath.match(/\.[^.]+?$/)[0]
+        console.log('cloudPath:', cloudPath)
+
         wx.cloud.uploadFile({
           cloudPath,
           filePath,

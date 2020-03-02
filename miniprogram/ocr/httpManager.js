@@ -4,7 +4,7 @@
  * describe：OCR 识别SDK网络请求管理客户端
 */
 
-var HttpClient = require("baidu-aip-sdk").HttpClient;
+let HttpClient = require("baidu-aip-sdk").HttpClient;
 
 class httpManager {
   setRequestOptions(){

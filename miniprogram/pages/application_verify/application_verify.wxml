@@ -41,8 +41,8 @@
       <button class="upload-pic" bindtap="doUpload">
         + 上传图片
       </button>
-      <view class="uploader-container" wx:if="{{imgUrl}}">
-        <image class="uploader-image" src="{{imgUrl}}" mode="aspectFit" bindtap="previewImg"></image>
+      <view class="uploader-container" wx:if="{{imgUrl[0]}}">
+        <image class="uploader-image" src="{{imgUrl[0]}}" mode="aspectFit" bindtap="previewImg"></image>
       </view>
     </view>
 
@@ -54,8 +54,8 @@
       <button class="upload-pic" bindtap="doUpload">
         + 上传图片
       </button>
-      <view class="uploader-container" wx:if="{{imgUrl}}">
-        <image class="uploader-image" src="{{imgUrl}}" mode="aspectFit" bindtap="previewImg"></image>
+      <view class="uploader-container" wx:if="{{imgUrl[1]}}">
+        <image class="uploader-image" src="{{imgUrl[1]}}" mode="aspectFit" bindtap="previewImg"></image>
       </view>
     </view>
 
@@ -67,8 +67,9 @@
       <button class="upload-pic" bindtap="doUpload">
         + 上传图片
       </button>
-      <view class="uploader-container" wx:if="{{imgUrl}}">
-        <image class="uploader-image" src="{{imgUrl}}" mode="aspectFit" bindtap="previewImg"></image>
+      <!--对战资料图预览-->
+      <view class="uploader-container" wx:if="{{imgUrl[2]}}">
+        <image class="uploader-image" src="{{imgUrl[2]}}" mode="aspectFit" bindtap="previewImg"></image>
       </view>
     </view>
 
