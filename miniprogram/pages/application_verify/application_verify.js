@@ -3,6 +3,7 @@
  * author: wangquanyou
  * describe: 申请战队审核
  */
+import { $init, $digest } from '../../util/utils/common.util'
 const db = require('../../util/dataBase.js')
 const app = getApp()
 
@@ -26,6 +27,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    $init(this);
     let data = [];
     //存入数据库取出的所有战队参数
     this.data.teamInfo = db.data.promiseValue['team'];
@@ -73,55 +75,58 @@ Page({
     })
   },
 
-  // 上传图片
+  // 选择图片
   doUpload: function() {
     let self = this;
-    // 选择图片
     wx.chooseImage({
       count: 1,
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
-      success: function(res) {
-
-        wx.showLoading({
-          title: '上传中',
-        })
-        const imgUrl = self.data.imgUrl.concat(res.tempFilePaths)
+      success: (res) => {
+        console.log('res.tempFilePaths:', res.tempFilePaths)
+        
+        self.data.imgUrl.push(res.tempFilePaths[0])
         const filePath = res.tempFilePaths[0]
-        console.log('filePath:', filePath.match(/\.[^.]+?$/))
+        console.log('imgUrl:', self.data.imgUrl)
         // 上传图片
         const cloudPath = 'my-image' + filePath.match(/\.[^.]+?$/)[0]
         console.log('cloudPath:', cloudPath)
-
-        wx.cloud.uploadFile({
-          cloudPath,
-          filePath,
-          success: res => {
-            console.log('[上传文件] 成功：', res)
-
-            app.globalData.fileID = res.fileID
-            app.globalData.cloudPath = cloudPath
-            app.globalData.imagePath = filePath
-
-            wx.navigateTo({
-              url: '../storageConsole/storageConsole'
-            })
-          },
-          fail: e => {
-            console.error('[上传文件] 失败：', e)
-            wx.showToast({
-              icon: 'none',
-              title: '上传失败',
-            })
-          },
-          complete: () => {
-            wx.hideLoading()
-          }
-        })
-
+        $digest(this);
       },
       fail: e => {
         console.error(e)
+      }
+    })
+  },
+
+  //上传图片
+  upLoadImg() {
+    wx.cloud.uploadFile({
+      cloudPath,
+      filePath,
+      success: res => {
+        wx.showLoading({
+          title: '上传中',
+        })
+        console.log('[上传文件] 成功：', res)
+
+        // app.globalData.fileID = res.fileID
+        // app.globalData.cloudPath = cloudPath
+        // app.globalData.imagePath = filePath
+
+        // wx.navigateTo({
+        //   url: '../storageConsole/storageConsole'
+        // })
+      },
+      fail: e => {
+        console.error('[上传文件] 失败：', e)
+        wx.showToast({
+          icon: 'none',
+          title: '上传失败',
+        })
+      },
+      complete: () => {
+        wx.hideLoading()
       }
     })
   },

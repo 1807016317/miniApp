@@ -80,3 +80,15 @@
   background-color: #00BFFF;
   margin-top: 15rpx;
 }
+
+.question-images {
+  display: flex;
+  align-items: center;
+  margin-top: 40rpx;
+}
+
+.up-image {
+  flex: 1;
+  height: 200rpx;
+  width: 100%;
+}

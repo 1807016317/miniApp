@@ -28,6 +28,7 @@ Page({
       winRateStr: '', //胜率称输入值
       scoreStr: '', //赛季评分
       creditLevelStr: '', //信誉等级
+      ageInput: '', //年龄下限
     }
   },
 

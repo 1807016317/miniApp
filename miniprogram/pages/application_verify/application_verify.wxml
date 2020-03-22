@@ -37,25 +37,26 @@
     <label class="heading">
       <text style="color:red">*</text> 请上传个人主页图：
     </label>
-    <view>
+    <view wx:if="{{imgUrl.length <= 0}}">
       <button class="upload-pic" bindtap="doUpload">
         + 上传图片
       </button>
-      <view class="uploader-container" wx:if="{{imgUrl[0]}}">
-        <image class="uploader-image" src="{{imgUrl[0]}}" mode="aspectFit" bindtap="previewImg"></image>
-      </view>
     </view>
+    <view class="question-images" wx:for="{{imgUrl}}" wx:key="*this" wx:if="{{imgUrl.length > 0}}">
+      <image class="up-image" src="{{imgUrl[0]}}" data-idx="{{index}}" mode="aspectFit" bindtap="previewImg"></image>
+    </view>
+
 
     <!--上传赛季评分图-->
     <label class="heading">
       <text style="color:red">*</text> 请上传常用英雄图：
     </label>
-    <view>
+    <view wx:if="{{imgUrl.length <= 1}}">
       <button class="upload-pic" bindtap="doUpload">
         + 上传图片
       </button>
-      <view class="uploader-container" wx:if="{{imgUrl[1]}}">
-        <image class="uploader-image" src="{{imgUrl[1]}}" mode="aspectFit" bindtap="previewImg"></image>
+      <view class="question-images" wx:for="{{imgUrl}}" wx:key="*this" wx:if="{{imgUrl.length > 1}}">
+        <image class="up-image" src="{{imgUrl[1]}}" data-idx="{{index}}" mode="aspectFit" bindtap="previewImg"></image>
       </view>
     </view>
 
@@ -63,13 +64,13 @@
     <label class="heading">
       <text style="color:red">*</text> 请上传对战资料图：
     </label>
-    <view>
+    <view wx:if="{{imgUrl.length <= 2}}">
       <button class="upload-pic" bindtap="doUpload">
         + 上传图片
       </button>
       <!--对战资料图预览-->
-      <view class="uploader-container" wx:if="{{imgUrl[2]}}">
-        <image class="uploader-image" src="{{imgUrl[2]}}" mode="aspectFit" bindtap="previewImg"></image>
+      <view class="question-images" wx:for="{{imgUrl}}" wx:key="*this" wx:if="{{imgUrl.length > 2}}">
+        <image class="up-image" src="{{imgUrl[2]}}" data-idx="{{index}}" mode="aspectFit" bindtap="previewImg"></image>
       </view>
     </view>
 

@@ -39,8 +39,10 @@ Page({
       sourceType: ['album', 'camera'],
       success: res => {
         const images = this.data.images.concat(res.tempFilePaths)
+        console.log('images:', images)
         this.data.images = images.length <= 3 ? images : images.slice(0, 3)
         console.log('this:', this)
+        console.log('this.data.images :',this.data.images )
         //$digest(this)
       }
     })
@@ -55,7 +57,7 @@ Page({
   handleImagePreview(e) {
     const idx = e.target.dataset.idx
     const images = this.data.images
-
+    console.log("预览");
     wx.previewImage({
       current: images[idx],
       urls: images,
